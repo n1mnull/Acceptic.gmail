@@ -8,8 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class GmailPasswordTest {
 
     WebDriver driver;
@@ -49,14 +47,11 @@ public class GmailPasswordTest {
 
         GmailLoginPage gmailLoginPage = new GmailLoginPage(driver);
         gmailLoginPage.enterLogin(login);
-        TimeUnit.SECONDS.sleep(1);
         gmailLoginPage.enterPassword(pass);
-        TimeUnit.SECONDS.sleep(3);
-
-        GmailInboxPage gmailInboxPage = new GmailInboxPage(driver);
 
         if (expectedResult) {
 //            System.out.println("Positive test");
+            GmailInboxPage gmailInboxPage = new GmailInboxPage(driver);
             int amountUnreadMessage = gmailInboxPage.getAmountUnreadMessage();
             System.out.println("Inbox = " + amountUnreadMessage +" unread message");
             Assert.assertTrue(amountUnreadMessage >= 0);

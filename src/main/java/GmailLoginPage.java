@@ -2,6 +2,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class GmailLoginPage extends BasePageObject{
 
   @FindBy(id = "Email")
@@ -26,17 +28,27 @@ public class GmailLoginPage extends BasePageObject{
     super(driver);
   }
 
-  public GmailLoginPage enterLogin(String login) {
+  public GmailLoginPage enterLogin(String login) throws InterruptedException {
     loginField.clear();
     loginField.sendKeys(login);
-    nextButton.click();
+    clickOnNextButton();
     return new GmailLoginPage(getDriver());
   }
 
-  public GmailInboxPage enterPassword(String pass) {
+  public void clickOnNextButton() throws InterruptedException {
+    nextButton.click();
+    TimeUnit.SECONDS.sleep(1);
+  }
+
+  public GmailInboxPage enterPassword(String pass) throws InterruptedException {
     passwordField.sendKeys(pass);
-    signInButton.click();
+    clickOnSignInButton();
     return new GmailInboxPage(getDriver());
+  }
+
+  public void clickOnSignInButton() throws InterruptedException {
+    signInButton.click();
+    TimeUnit.SECONDS.sleep(3);
   }
 
   public boolean errorMsgEmailExist() {
@@ -44,10 +56,6 @@ public class GmailLoginPage extends BasePageObject{
   }
 
   public boolean errorMsgPassExist() {
-//    System.out.println("pass error isDisplayed = " + errorMessagePass.isDisplayed());
-//    System.out.println("pass isEnabled = " + errorMessagePass.isEnabled());
-//    System.out.println("pass getText = " + errorMessagePass.getText());
-//    System.out.println("pass equals null = " + errorMessagePass.equals(null));
     return errorMessagePass.isDisplayed();
   }
 

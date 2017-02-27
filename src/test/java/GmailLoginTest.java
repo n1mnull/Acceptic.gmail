@@ -8,8 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class GmailLoginTest {
 
   WebDriver driver;
@@ -48,7 +46,6 @@ public class GmailLoginTest {
   public void loginVerificationTest(String login, boolean expectedResult) throws InterruptedException {
     GmailLoginPage gmailLoginPage = new GmailLoginPage(driver);
     gmailLoginPage.enterLogin(login);
-    TimeUnit.SECONDS.sleep(1);
     boolean isErrorMsgEmailExist = gmailLoginPage.errorMsgEmailExist();
     Assert.assertEquals(!isErrorMsgEmailExist, expectedResult);
   }

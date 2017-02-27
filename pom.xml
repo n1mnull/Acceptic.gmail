@@ -11,23 +11,7 @@
     <properties>
         <testng.version>6.8.17</testng.version>
         <selenium.version>2.48.1</selenium.version>
-        <!--<compiler.version>1.7</compiler.version>-->
     </properties>
-
-
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<version>3.1</version>-->
-                <!--<configuration>-->
-                    <!--<source>${compiler.version}</source>-->
-                    <!--<target>${compiler.version}</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
 
     <dependencies>
         <dependency>
